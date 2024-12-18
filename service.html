@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Seismosentry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">SeismoSentry</div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="service.html">Services</a></li>
+                    <li class="nav-item"><a href="faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2 class="animate-title">Layanan Kami</h2>
+            <p class="about-lead animate-up">Solusi Pemantauan dan Edukasi Gempa Bumi</p>
+
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Pemetaan Real-Time</h3>
+                    <p>Visualisasi aktivitas seismik secara real-time dengan peta interaktif yang mudah dipahami.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Update data setiap menit</li>
+                        <li><i class="fas fa-check"></i> Filter berdasarkan magnitude</li>
+                        <li><i class="fas fa-check"></i> Informasi detail setiap gempa</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Historis</h3>
+                    <p>Akses lengkap ke database gempa bumi historis untuk analisis dan penelitian.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Data sejak tahun 2004</li>
+                        <li><i class="fas fa-check"></i> Format data terstruktur</li>
+                        <li><i class="fas fa-check"></i> Ekspor data ke Excel/CSV</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Sistem Notifikasi</h3>
+                    <p>Dapatkan peringatan dini tentang aktivitas seismik di area yang Anda pilih.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Notifikasi real-time</li>
+                        <li><i class="fas fa-check"></i> Kustomisasi area pemantauan</li>
+                        <li><i class="fas fa-check"></i> Multi-platform support</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Program Edukasi</h3>
+                    <p>Materi edukasi komprehensif tentang gempa bumi dan mitigasi bencana.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Modul pembelajaran interaktif</li>
+                        <li><i class="fas fa-check"></i> Video tutorial</li>
+                        <li><i class="fas fa-check"></i> Panduan keselamatan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 SeismoSentry. All rights reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation classes when elements enter viewport
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

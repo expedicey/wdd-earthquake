@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Seismosentry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">SeismoSentry</div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="service.html">Services</a></li>
+                    <li class="nav-item"><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2 class="animate-title">Frequently Asked Questions</h2>
+            <p class="about-lead animate-up">Pertanyaan yang Sering Diajukan</p>
+
+            <div class="faq-section">
+                <div class="info-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Tentang SeismoSentry</h3>
+                        <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <div class="faq-item">
+                            <h4>Apa itu SeismoSentry?</h4>
+                            <p>SeismoSentry adalah platform pemantauan gempa bumi yang menyediakan informasi real-time tentang aktivitas seismik di Indonesia.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Bagaimana cara menggunakan SeismoSentry?</h4>
+                            <p>Anda dapat menggunakan peta interaktif kami untuk melihat aktivitas gempa terkini, mengakses riwayat gempa, dan membaca konten edukatif.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-map"></i> Peta Interaktif</h3>
+                        <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <div class="faq-item">
+                            <h4>Bagaimana cara membaca peta interaktif?</h4>
+                            <p>Peta menunjukkan titik-titik gempa dengan warna berbeda berdasarkan kekuatan gempa. Klik pada titik untuk melihat detail lebih lanjut.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Seberapa sering data diperbaharui?</h4>
+                            <p>Data gempa diperbaharui secara real-time setiap kali terjadi gempa baru yang terdeteksi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bell"></i> Notifikasi</h3>
+                        <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content">
+                        <div class="faq-item">
+                            <h4>Bagaimana cara mendapatkan notifikasi gempa?</h4>
+                            <p>Anda dapat mengatur notifikasi melalui aplikasi untuk mendapatkan peringatan dini ketika terjadi gempa di area yang Anda pilih.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Apakah layanan notifikasi berbayar?</h4>
+                            <p>Tidak, semua layanan notifikasi gempa bumi di SeismoSentry tersedia secara gratis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 SeismoSentry. All rights reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation classes when elements enter viewport
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.info-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Expand/collapse card content
+        document.querySelectorAll('.expand-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('.info-card');
+                const content = card.querySelector('.card-content');
+                const icon = btn.querySelector('i');
+                
+                card.classList.toggle('expanded');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+                
+                if (card.classList.contains('expanded')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = '0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

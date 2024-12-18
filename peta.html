@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Interaktif - SeismoSentry</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">SeismoSentry</div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="service.html">Services</a></li>
+                    <li class="nav-item"><a href="faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="secondary-nav">
+            <div class="nav-item-wrapper">
+                <a href="peta.html" class="nav-item peta active">PETA INTERAKTIF</a>
+                <a href="riwayat.html" class="nav-item riwayat">RIWAYAT GEMPA</a>
+                <a href="edukasi.html" class="nav-item konten">KONTEN EDUKATIF</a>
+            </div>
+        </nav>
+        
+        <div class="content">
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-sidebar">
+                    <div class="control-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-filter"></i> Filter Gempa</h3>
+                        </div>
+                        <div class="panel-content">
+                            <div class="filter-group">
+                                <label><i class="fas fa-ruler"></i> Magnitude:</label>
+                                <select id="magnitude-filter">
+                                    <option value="all">Semua</option>
+                                    <option value="minor">Minor (< 4.0)</option>
+                                    <option value="light">Light (4.0-4.9)</option>
+                                    <option value="moderate">Moderate (5.0-5.9)</option>
+                                    <option value="strong">Strong (≥ 6.0)</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label><i class="fas fa-clock"></i> Periode:</label>
+                                <select id="time-filter">
+                                    <option value="24h">24 Jam Terakhir</option>
+                                    <option value="7d">7 Hari Terakhir</option>
+                                    <option value="30d">30 Hari Terakhir</option>
+                                </select>
+                            </div>
+                            <button class="btn-apply">
+                                <i class="fas fa-search"></i> Terapkan Filter
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="info-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-bell"></i> Gempa Terkini</h3>
+                        </div>
+                        <div class="panel-content earthquake-list" id="current-earthquakes">
+                            <!-- Template for earthquake items -->
+                            <div class="earthquake-item">
+                                <div class="eq-magnitude strong">6.2</div>
+                                <div class="eq-details">
+                                    <h4>Banda Aceh, Indonesia</h4>
+                                    <p><i class="fas fa-calendar-alt"></i> 2 jam yang lalu</p>
+                                    <p><i class="fas fa-arrows-alt-v"></i> Kedalaman: 10 km</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="legend-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-info-circle"></i> Legenda</h3>
+                        </div>
+                        <div class="panel-content">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #00FF00"></span>
+                                <span>Minor (< 4.0)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #FFFF00"></span>
+                                <span>Light (4.0-4.9)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #FFA500"></span>
+                                <span>Moderate (5.0-5.9)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #FF0000"></span>
+                                <span>Strong (≥ 6.0)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 SeismoSentry. All rights reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([-2.5489, 118.0149], 5); // Center on Indonesia
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Mock earthquake data - Replace with real API data
+        const earthquakes = [
+            {lat: -6.2088, lng: 106.8456, magnitude: 4.5, depth: 10, location: "Jakarta"},
+            {lat: -7.7956, lng: 110.3695, magnitude: 5.2, depth: 15, location: "Yogyakarta"},
+            // Add more earthquake data points
+        ];
+
+        // Add earthquake markers
+        earthquakes.forEach(quake => {
+            const circle = L.circle([quake.lat, quake.lng], {
+                color: getQuakeColor(quake.magnitude),
+                fillColor: getQuakeColor(quake.magnitude),
+                fillOpacity: 0.5,
+                radius: quake.magnitude * 10000
+            }).addTo(map);
+
+            circle.bindPopup(`
+                <strong>Magnitude:</strong> ${quake.magnitude}<br>
+                <strong>Location:</strong> ${quake.location}<br>
+                <strong>Depth:</strong> ${quake.depth} km
+            `);
+        });
+
+        function getQuakeColor(magnitude) {
+            if (magnitude >= 6.0) return '#FF0000';
+            if (magnitude >= 5.0) return '#FFA500';
+            if (magnitude >= 4.0) return '#FFFF00';
+            return '#00FF00';
+        }
+    </script>
+</body>
+</html>

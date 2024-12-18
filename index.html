@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeismoSentry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">SeismoSentry</div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="service.html">Services</a></li>
+                    <li class="nav-item"><a href="faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Pemantauan Gempa Bumi Real-Time</h1>
+                    <p>Dapatkan informasi terkini tentang aktivitas seismik di Indonesia</p>
+                    <div class="hero-buttons">
+                        <a href="peta.html" class="btn-primary">Lihat Peta <i class="fas fa-map-marked-alt"></i></a>
+                        <a href="edukasi.html" class="btn-secondary">Pelajari Lebih Lanjut <i class="fas fa-book-reader"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Peta Interaktif</h3>
+                        <p>Pantau aktivitas gempa bumi secara real-time dengan peta interaktif</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-history"></i>
+                        <h3>Riwayat Gempa</h3>
+                        <p>Akses data historis gempa bumi di Indonesia</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-book-reader"></i>
+                        <h3>Konten Edukatif</h3>
+                        <p>Pelajari tentang gempa bumi dan cara menghadapinya</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bell"></i>
+                        <h3>Notifikasi</h3>
+                        <p>Dapatkan peringatan dini untuk aktivitas seismik</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="latest-earthquakes">
+                <h2>Gempa Bumi Terkini</h2>
+                <div class="earthquake-list">
+                    <!-- This would be populated dynamically -->
+                    <div class="earthquake-item">
+                        <div class="magnitude">5.2</div>
+                        <div class="details">
+                            <h4>Banda Aceh, Indonesia</h4>
+                            <p>2 jam yang lalu - Kedalaman: 10 km</p>
+                        </div>
+                    </div>
+                    <!-- Add more earthquake items -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 SeismoSentry. All rights reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Seismosentry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">SeismoSentry</div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="service.html">Services</a></li>
+                    <li class="nav-item"><a href="faq.html">FAQs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <section id="about">
+                <h2 class="animate-title">Tentang Seismosentry</h2>
+                <p class="about-lead animate-up">Platform Pemantauan dan Edukasi Gempa Bumi</p>
+
+                <div class="about-section">
+                    <section id="mission" class="info-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bullseye"></i> Misi Kami</h3>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="card-content">
+                            <p>Seismosentry bertujuan untuk menyediakan informasi terkini tentang gempa bumi serta edukasi bagi masyarakat mengenai kesiapsiagaan bencana. Kami berkomitmen untuk:</p>
+                            <ul class="animated-list">
+                                <li><i class="fas fa-check"></i> Memberikan informasi real-time tentang aktivitas seismik</li>
+                                <li><i class="fas fa-check"></i> Meningkatkan kesadaran masyarakat tentang kesiapsiagaan bencana</li>
+                                <li><i class="fas fa-check"></i> Menyediakan edukasi tentang gempa bumi dan mitigasinya</li>
+                                <li><i class="fas fa-check"></i> Membangun komunitas yang tanggap bencana</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="team" class="info-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-users"></i> Tim Kami</h3>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="card-content">
+                            <p>Seismosentry dibangun oleh sekelompok ilmuwan dan profesional di bidang geofisika, yang berkomitmen untuk meningkatkan kesadaran dan mitigasi gempa bumi.</p>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <h4>Ahli Geofisika</h4>
+                                </div>
+                                <div class="team-member">
+                                    <i class="fas fa-microscope"></i>
+                                    <h4>Peneliti Seismologi</h4>
+                                </div>
+                                <div class="team-member">
+                                    <i class="fas fa-hard-hat"></i>
+                                    <h4>Spesialis Mitigasi Bencana</h4>
+                                </div>
+                                <div class="team-member">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <h4>Tim Pengembang Teknologi</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="contact" class="info-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-envelope"></i> Kontak Kami</h3>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="card-content">
+                            <p>Untuk informasi lebih lanjut atau pertanyaan, silakan hubungi kami melalui:</p>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <p><a href="mailto:info@seismosentry.com">info@seismosentry.com</a></p>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <p>+62 21 1234 5678</p>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <p>Jl. Seismologi No. 123, Jakarta Pusat, Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 SeismoSentry. All rights reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation classes when elements enter viewport
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.info-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Expand/collapse card content
+        document.querySelectorAll('.expand-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('.info-card');
+                const content = card.querySelector('.card-content');
+                const icon = btn.querySelector('i');
+                
+                card.classList.toggle('expanded');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+                
+                if (card.classList.contains('expanded')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = '0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
