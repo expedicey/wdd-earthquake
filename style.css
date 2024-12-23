@@ -58,9 +58,47 @@ body, html {
     vertical-align: middle;
 }
 
+/* Auth Navigation Styles */
 .nav {
     display: flex;
     align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.auth-nav {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-left: var(--spacing-lg);
+}
+
+.auth-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.auth-btn.login {
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.auth-btn.register {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+}
+
+.auth-btn.login:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.auth-btn.register:hover {
+    background: var(--white);
 }
 
 .nav-list {
